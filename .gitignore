@@ -32,5 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-src/main/java/com/lcwaikiki/advertservice/config/KeycloakServerProperties.java
-src/main/resources/application.properties
+src/main/java/dev/ispiroglu/jobadvertysystem/config/KeycloakServerProperties.java
+src/main/resources/application.yaml
