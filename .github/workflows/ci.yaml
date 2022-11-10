@@ -3,22 +3,22 @@ on:
   push:
     branches:
       - 'master'
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      permission:
-        packages: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permission:
+      packages: write
 
-      steps:
-        - name: Checkout
-          uses: actions/@checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/@checkout@v3
 
-        - name: Setup Java
-          uses: actions/setup-java@v3
-          with:
-            distribution: 'corretto'
-            java-version: '17'
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '17'
 
-        - name: Build
-          run: | 
-            ./gradlew build
+      - name: Build
+        run: | 
+          ./gradlew build
