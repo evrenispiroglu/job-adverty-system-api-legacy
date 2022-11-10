@@ -28,7 +28,7 @@ public class LoggingFilter extends OncePerRequestFilter {
         String requestBody = getBody(requestWrapper.getContentAsByteArray(), request.getCharacterEncoding());
         String responseBody = getBody(responseWrapper.getContentAsByteArray(), response.getCharacterEncoding());
 
-        log.info("REQUEST LOG : SessionID = {}, Method = {}, RequestURI = {}, RequestBody = {} | ResponseBody{}, Time Taken = {}",
+        log.info("!! REQUEST LOG : SessionID = {}, Method = {}, RequestURI = {}, RequestBody = {} | ResponseBody{}, Time Taken = {}",
                 request.getSession().getId(), request.getMethod(), request.getRequestURI(), requestBody, responseBody, timeTaken);
             responseWrapper.copyBodyToResponse();
     }
