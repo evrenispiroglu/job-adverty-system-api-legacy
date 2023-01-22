@@ -39,7 +39,6 @@ public class UserService implements UserDetailsService {
   private final AdvertDtoConverter advertDtoConverter;
   private final PasswordEncoder passwordEncoder;
 
-
   public UserService(UserRepository userRepository,
       UserDtoConverter userDtoConverter, AdvertDtoConverter advertDtoConverter,
       PasswordEncoder passwordEncoder) {
@@ -153,8 +152,7 @@ public class UserService implements UserDetailsService {
     return userRepository.count();
   }
 
-  public void addAdvertOwnershipToUser(AdvertOwner advertOwner, User user)
-      throws UserNotFoundException {
+  public void addAdvertOwnershipToUser(AdvertOwner advertOwner, User user) {
     user.addOwnedAdvert(advertOwner);
     userRepository.save(user);
   }
