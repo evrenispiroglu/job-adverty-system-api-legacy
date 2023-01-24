@@ -32,3 +32,11 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+
+    - name: Docker Compose Action
+      uses: isbang/compose-action@v1.4.0
+      with:
+          compose-file: "../../src/main/docker/docker-compose.yml"
+
+      
+    
