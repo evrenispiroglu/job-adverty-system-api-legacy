@@ -29,10 +29,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Build with Gradle
-      run: cp target/*.jar src/main/docker/
+
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+
+    - name: CPY Build jar
+      run: cp target/*.jar src/main/docker/
 
     - name: Docker Compose Action
       uses: isbang/compose-action@v1.4.0
