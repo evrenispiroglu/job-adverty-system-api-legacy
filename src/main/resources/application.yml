@@ -1,10 +1,10 @@
-spring:
-  jpa:
-    database: postgresql
-    hibernate:
-      ddl-auto: update
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/advert_service
-    username: docker
-    password: docker
+#spring:
+#  jpa:
+#    database: postgresql
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/advert_service
+#    username: docker
+#    password: docker

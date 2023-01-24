@@ -4,6 +4,7 @@ package dev.ispiroglu.jobadvertysystem.config;
 import dev.ispiroglu.jobadvertysystem.filter.CustomAuthenticationFilter;
 import dev.ispiroglu.jobadvertysystem.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@Slf4j
 @RequiredArgsConstructor //Should config component based
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -34,10 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     CustomAuthenticationFilter filter = new CustomAuthenticationFilter(authenticationManagerBean());
+    log.info("Sel");
     filter.setFilterProcessesUrl("/api/v1/login");
     http.cors().and().csrf().disable();
 
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    http.authorizeRequests().antMatchers("/log").permitAll();
     http.authorizeRequests().antMatchers("/api/v1/login/**").permitAll();
     http.authorizeRequests().antMatchers("/api/v1/users/registration/**").permitAll();
     http.authorizeRequests().antMatchers("/api/v1/users/login/{email}/**").permitAll();
