@@ -36,7 +36,7 @@ jobs:
     - name: Docker Compose Action
       uses: isbang/compose-action@v1.4.0
       with:
-          compose-file: "../../src/main/docker/docker-compose.yml"
+          compose-file: "/job-adverty-system-api-legacy/blob/main/src/main/docker/docker-compose.yml"
 
       
     
