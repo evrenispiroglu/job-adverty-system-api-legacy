@@ -35,7 +35,7 @@ jobs:
         arguments: build
 
     - name: CPY Build jar
-      run: cp target/*.jar src/main/docker/
+      run: cp build/libs/jobadvertysystem-0.jar src/main/docker/
 
     - name: Docker Compose Action
       uses: isbang/compose-action@v1.4.0
