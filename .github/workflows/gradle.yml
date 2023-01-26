@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Login to Azure
-      run: az login --service-principal -u $AZURE_SP_ID -p $AZURE_SP_PASSWORD --tenant $AZURE_TENANT_ID
+      run: az login --service-principal -u {{ secrets.AZURE_SP_ID }} -p {{ secrets.AZURE_SP_PASSWORD }} --tenant {{ secrets.AZURE_TENANT_ID }}
 
     - name: Set up JDK 17
       uses: actions/setup-java@v3
