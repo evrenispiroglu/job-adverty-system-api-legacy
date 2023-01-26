@@ -23,7 +23,7 @@ jobs:
 
     steps:
     - name: Checkout Code
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - name: Login to Azure
       run: az login --service-principal -u $AZURE_SP_ID -p $AZURE_SP_PASSWORD --tenant $AZURE_TENANT_ID
