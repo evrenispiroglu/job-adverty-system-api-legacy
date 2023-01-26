@@ -22,14 +22,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Code
     - uses: actions/checkout@v3
+
+    - name: Login to Azure
+      run: az login --service-principal -u $AZURE_SP_ID -p $AZURE_SP_PASSWORD --tenant $AZURE_TENANT_ID
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Build with Gradle
 
+    - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
@@ -42,5 +47,5 @@ jobs:
       with:
           compose-file: "src/main/docker/docker-compose.yml"
 
-      
-    
+    - name: Deploy Docker Compose
+      run: az webapp up --docker-compose-file docker-compose.yml --name mywebapp --resource-group myresourcegroup
