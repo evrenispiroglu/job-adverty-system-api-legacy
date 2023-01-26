@@ -48,4 +48,4 @@ jobs:
           compose-file: "src/main/docker/docker-compose.yml"
 
     - name: Deploy Docker Compose
-      run: az webapp up --docker-compose-file docker-compose.yml --name mywebapp --resource-group myresourcegroup
+      run: az webapp up --docker-compose-file docker-compose.yml --name job-advert-system --resource-group job-advert-system
