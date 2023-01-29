@@ -88,7 +88,7 @@ public class AdvertDtoConverter {
   }
 
   public UserApplicationTableAdvertInfo convertToAdvertInfo(Advert advert,
-      ApplicationStatus status) {
+                                                            ApplicationStatus status) {
     return new UserApplicationTableAdvertInfo(
         advert.getName(), advert.getPosition(), advert.getSummary(),
         advert.getDistrict() + "/" + advert.getProvince(), status
@@ -123,7 +123,7 @@ public class AdvertDtoConverter {
   }
 
   public UserApplicationTableAdvertInfo converToApplicationTableAdvertInfo(Advert advert,
-      ApplicationStatus status) {
+                                                                           ApplicationStatus status) {
     return new UserApplicationTableAdvertInfo(
         advert.getName(), advert.getPosition(), advert.getSummary(),
         advert.getDistrict() + "/" + advert.getProvince(), status

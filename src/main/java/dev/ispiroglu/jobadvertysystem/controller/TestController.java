@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/log")
 @Slf4j
 public class TestController {
-    @GetMapping
-    public void log() {
-        log.info("Test Log");
-    }
+  @GetMapping
+  public void log() {
+    log.info("Test Log");
+  }
 }

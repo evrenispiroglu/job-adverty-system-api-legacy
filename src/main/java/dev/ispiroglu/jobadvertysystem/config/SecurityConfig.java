@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     CustomAuthenticationFilter filter = new CustomAuthenticationFilter(authenticationManagerBean());
-    log.info("Sel");
     filter.setFilterProcessesUrl("/api/v1/login");
     http.cors().and().csrf().disable();
 
@@ -48,33 +47,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //    Advert Requests
     http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/adverts/**")
-            .hasAnyAuthority("LOGGED_IN");
+        .hasAnyAuthority("LOGGED_IN");
     http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/adverts/filter")
-            .hasAnyAuthority("LOGGED_IN");
+        .hasAnyAuthority("LOGGED_IN");
     http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/v1/adverts/**/applications/**")
-            .hasAnyAuthority("employee");
+        .hasAnyAuthority("employee");
     http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/v1/adverts")
-            .hasAnyAuthority("employer");
+        .hasAnyAuthority("employer");
     http.authorizeRequests().antMatchers(HttpMethod.PATCH, "/api/v1/adverts")
-            .hasAnyAuthority("employer");
+        .hasAnyAuthority("employer");
     http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/v1/adverts")
-            .hasAnyAuthority("employer");
+        .hasAnyAuthority("employer");
     http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/adverts/{id}/applications")
-            .hasAnyAuthority("employer");
+        .hasAnyAuthority("employer");
 
     // User Requests
     http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/users/{id}/**")
-            .hasAnyAuthority("LOGGED_IN");
+        .hasAnyAuthority("LOGGED_IN");
     http.authorizeRequests().antMatchers(HttpMethod.PATCH, "/api/v1/users/{id}/**")
-            .hasAnyAuthority("employee");
+        .hasAnyAuthority("employee");
     http.authorizeRequests().antMatchers("/api/v1/users/**/photo")
-            .hasAnyAuthority("employee");
+        .hasAnyAuthority("employee");
     http.authorizeRequests().antMatchers("/api/v1/users/**/cv")
-            .hasAnyAuthority("employee");
+        .hasAnyAuthority("employee");
 
     http.addFilter(filter);
     http.addFilterBefore(new CustomAuthorizationFilter(),
-            UsernamePasswordAuthenticationFilter.class);
+        UsernamePasswordAuthenticationFilter.class);
     http.authorizeRequests().anyRequest().authenticated();
   }
 

@@ -12,9 +12,9 @@ public class DashboardInfoResponse {
   private List<DashboardAdvertTableInfoDto> soonStartingAdverts;
 
   public DashboardInfoResponse(Long totalAdvertCount, Long totalApplicationCount,
-      Long totalUserCount,
-      List<DashboardAdvertTableInfoDto> soonEndingAdverts,
-      List<DashboardAdvertTableInfoDto> soonStartingAdverts) {
+                               Long totalUserCount,
+                               List<DashboardAdvertTableInfoDto> soonEndingAdverts,
+                               List<DashboardAdvertTableInfoDto> soonStartingAdverts) {
     this.totalAdvertCount = totalAdvertCount;
     this.totalApplicationCount = totalApplicationCount;
     this.totalUserCount = totalUserCount;

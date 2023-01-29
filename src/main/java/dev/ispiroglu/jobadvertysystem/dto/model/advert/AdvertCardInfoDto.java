@@ -12,8 +12,8 @@ public class AdvertCardInfoDto {
   private String location;
 
   public AdvertCardInfoDto(Long id, Blob image, String advertName, String position,
-      String summary,
-      String location) {
+                           String summary,
+                           String location) {
     this.id = id;
     this.image = image;
     this.advertName = advertName;

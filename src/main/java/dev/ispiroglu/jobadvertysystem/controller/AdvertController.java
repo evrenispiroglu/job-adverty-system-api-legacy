@@ -23,7 +23,6 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -50,7 +49,7 @@ public class AdvertController {
   private final OperationHandlerService operationHandlerService;
 
   public AdvertController(AdvertService advertService,
-      OperationHandlerService operationHandlerService) {
+                          OperationHandlerService operationHandlerService) {
     this.advertService = advertService;
     this.operationHandlerService = operationHandlerService;
   }
@@ -68,7 +67,7 @@ public class AdvertController {
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
   public ResponseEntity<AdvertDetailsDto> create(
-          @RequestBody CreateAdvertRequest createAdvertRequest, @RequestParam Long userID)
+      @RequestBody CreateAdvertRequest createAdvertRequest, @RequestParam Long userID)
       throws UserNotFoundException {
     return ResponseEntity.ok(operationHandlerService.createAdvert(createAdvertRequest, userID));
   }
@@ -76,7 +75,7 @@ public class AdvertController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @PatchMapping("/{id}/advertInfo")
   public void update(@RequestBody UpdateAdvertRequest updateAdvertRequest,
-      @PathVariable long id)
+                     @PathVariable long id)
       throws AdvertNotFoundException, ParseException {
     advertService.updateAdvert(updateAdvertRequest, id);
   }
@@ -84,19 +83,19 @@ public class AdvertController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping("/{id}")
   public void delete(@PathVariable long id) throws AdvertNotFoundException {
-    System.out.println("Delete");
     advertService.deleteAdvert(id);
   }
 
   @GetMapping
   public ResponseEntity<Page<AdvertCardInfoDto>> getAdvertCards(@RequestParam int page,
-                                                                @RequestParam Long userID) throws UserNotFoundException {
+                                                                @RequestParam Long userID)
+      throws UserNotFoundException {
     return ResponseEntity.ok(advertService.getAdvertCards(page, userID));
   }
 
   @PatchMapping("/filter") // Patch ??
   public ResponseEntity<List<AdvertCardInfoDto>> findFilteredAdverts(
-          @RequestBody GetFilteredAdvertsRequest request, @RequestParam Long userID)
+      @RequestBody GetFilteredAdvertsRequest request, @RequestParam Long userID)
       throws SQLException, UserNotFoundException {
     return ResponseEntity.ok(advertService.findFilteredAdverts(request, userID));
   }
@@ -104,7 +103,8 @@ public class AdvertController {
 
   @PostMapping("/{id}/applications")
   public void addUserToAdvert(@RequestBody Long userID, @PathVariable Long id)
-      throws UserNotFoundException, AdvertNotFoundException, UserNotValidForApplicationException, AdvertIsFullException, UserAlreadyAppliedException {
+      throws UserNotFoundException, AdvertNotFoundException, UserNotValidForApplicationException,
+      AdvertIsFullException, UserAlreadyAppliedException {
     operationHandlerService.addApplicantToAdvert(id, userID);
   }
 
@@ -128,7 +128,8 @@ public class AdvertController {
 
   @PatchMapping("/{id}/applications")
   public void updateApplicationStatus(@RequestBody UpdateApplicationStatusRequest request,
-      @PathVariable Long id) throws UserNotFoundException, AdvertNotFoundException {
+                                      @PathVariable Long id)
+      throws UserNotFoundException, AdvertNotFoundException {
     operationHandlerService.updateApplicationStatus(id, request.getUserId(),
         request.getNewStatus());
   }
@@ -137,7 +138,6 @@ public class AdvertController {
   public void updateAdvertPhoto(UpdateAdvertPhotoRequest request,
                                 @PathVariable Long id)
       throws IOException, AdvertNotFoundException, SQLException {
-    System.out.println(request.getFile());
     advertService.updateAdvertPhoto(request.getFile(), id);
   }
 

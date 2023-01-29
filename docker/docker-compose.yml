@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  advert_service:
+    image: 'advert-service'
+    build:
+      context: .
+    container_name: advert-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    links:
+      - logstash
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.postgresql.Driver
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_DATABASE=postgresql
+  db:
+    image: 'postgres:15-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.8
+    volumes:
+      - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.8
+    command: -f /etc/logstash/conf.d/
+    volumes:
+      - ./logstash/:/etc/logstash/conf.d/
+    ports:
+      - "5000:5000/tcp"
+    environment:
+      LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.8
+    volumes:
+      - ./kibana/:/usr/share/kibana/config/
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch

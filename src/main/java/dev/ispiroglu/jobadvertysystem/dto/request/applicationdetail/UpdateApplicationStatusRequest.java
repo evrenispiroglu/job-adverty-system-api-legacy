@@ -21,12 +21,12 @@ public class UpdateApplicationStatusRequest {
     return userId;
   }
 
-  public ApplicationStatus getNewStatus() {
-    return newStatus;
-  }
-
   public void setUserId(Long userId) {
     this.userId = userId;
+  }
+
+  public ApplicationStatus getNewStatus() {
+    return newStatus;
   }
 
   public void setNewStatus(ApplicationStatus newStatus) {

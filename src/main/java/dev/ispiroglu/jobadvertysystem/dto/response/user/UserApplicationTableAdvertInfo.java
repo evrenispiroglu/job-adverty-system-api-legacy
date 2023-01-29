@@ -11,8 +11,8 @@ public class UserApplicationTableAdvertInfo {
   private ApplicationStatus status;
 
   public UserApplicationTableAdvertInfo(String name, String position, String summary,
-      String location,
-      ApplicationStatus status) {
+                                        String location,
+                                        ApplicationStatus status) {
     this.name = name;
     this.position = position;
     this.summary = summary;

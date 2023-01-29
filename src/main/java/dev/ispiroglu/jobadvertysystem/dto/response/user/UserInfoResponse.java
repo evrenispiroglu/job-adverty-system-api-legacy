@@ -17,9 +17,10 @@ public class UserInfoResponse {
   private String aboutUser;
 
   public UserInfoResponse(Long id, byte[] cv, byte[] profilePhoto, String firstname,
-      String lastname,
-      String gender, String email, String phoneNumber, String province, int provinceID,
-      String district, int experience, String aboutUser) {
+                          String lastname,
+                          String gender, String email, String phoneNumber, String province,
+                          int provinceID,
+                          String district, int experience, String aboutUser) {
     this.id = id;
     this.cv = cv;
     this.profilePhoto = profilePhoto;

@@ -65,10 +65,10 @@ public class Advert {
 
 
   public Advert(Long id, String name, String summary, Date startDate, Date endDate,
-      String position, int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean active, byte[] photo, String companyName,
-      String department, LocalDateTime creationDate, LocalDateTime update,
-      Set<ApplicationDetail> applications) {
+                String position, int capacity, String district, String province, int provinceID,
+                String jobDefinition, boolean active, byte[] photo, String companyName,
+                String department, LocalDateTime creationDate, LocalDateTime update,
+                Set<ApplicationDetail> applications) {
     this.id = id;
     this.name = name;
     this.summary = summary;
@@ -94,8 +94,9 @@ public class Advert {
   }
 
   public Advert(String name, String summary, Date startDate, Date endDate, String position,
-      int capacity, String district, String province, int provinceID, String jobDefinition,
-      boolean active, byte[] photo, String companyName, String department) {
+                int capacity, String district, String province, int provinceID,
+                String jobDefinition,
+                boolean active, byte[] photo, String companyName, String department) {
     this.name = name;
     this.summary = summary;
     this.startDate = startDate;
@@ -113,9 +114,9 @@ public class Advert {
   }
 
   public Advert(String name, String summary, Date startDate, Date endDate, String position,
-      int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean active, String companyName, String department,
-      AdvertOwner advertOwner) {
+                int capacity, String district, String province, int provinceID,
+                String jobDefinition, boolean active, String companyName, String department,
+                AdvertOwner advertOwner) {
     this.name = name;
     this.summary = summary;
     this.startDate = startDate;
@@ -133,8 +134,8 @@ public class Advert {
   }
 
   public Advert(String name, String summary, Date startDate, Date endDate, String position,
-      int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean active, String companyName, String department) {
+                int capacity, String district, String province, int provinceID,
+                String jobDefinition, boolean active, String companyName, String department) {
     this.name = name;
     this.summary = summary;
     this.startDate = startDate;

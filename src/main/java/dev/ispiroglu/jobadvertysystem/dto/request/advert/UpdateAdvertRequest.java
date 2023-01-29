@@ -53,8 +53,10 @@ public class UpdateAdvertRequest {
 
 
   public UpdateAdvertRequest(String name, String summary, String startDate, String endDate,
-      String position, int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean active, String companyName, String department) {
+                             String position, int capacity, String district, String province,
+                             int provinceID,
+                             String jobDefinition, boolean active, String companyName,
+                             String department) {
     this.name = name;
     this.summary = summary;
     this.startDate = startDate;

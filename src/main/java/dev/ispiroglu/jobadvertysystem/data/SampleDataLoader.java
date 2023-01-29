@@ -1,6 +1,7 @@
 package dev.ispiroglu.jobadvertysystem.data;
 
 //import com.github.javafaker.Faker;
+
 import dev.ispiroglu.jobadvertysystem.exception.UserNotFoundException;
 import dev.ispiroglu.jobadvertysystem.repository.AdvertRepository;
 import dev.ispiroglu.jobadvertysystem.repository.UserRepository;
@@ -10,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 //@Component
 public class SampleDataLoader implements CommandLineRunner {
@@ -22,7 +22,8 @@ public class SampleDataLoader implements CommandLineRunner {
   private final AdvertRepository advertRepository;
 
   public SampleDataLoader(UserRepository userRepository, PasswordEncoder passwordEncoder,
-      OperationHandlerService operationHandlerService, AdvertRepository advertRepository) {
+                          OperationHandlerService operationHandlerService,
+                          AdvertRepository advertRepository) {
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
     this.operationHandlerService = operationHandlerService;

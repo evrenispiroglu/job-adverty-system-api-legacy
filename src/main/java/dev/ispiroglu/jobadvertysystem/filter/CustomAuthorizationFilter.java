@@ -29,14 +29,14 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-      FilterChain filterChain) throws ServletException, IOException {
+                                  FilterChain filterChain) throws ServletException, IOException {
     log.info("Incoming request: " + request.getRequestURI());
     log.info("\tProtocol: " + request.getProtocol());
 
-    if ( request.getServletPath().equals("/api/v1/login") ||
-            request.getServletPath().equals("/swagger-ui.html") ||
-            request.getServletPath().equals("/api/v1/users/registration") ||
-            request.getServletPath().equals("/log")
+    if (request.getServletPath().equals("/api/v1/login") ||
+        request.getServletPath().equals("/swagger-ui.html") ||
+        request.getServletPath().equals("/api/v1/users/registration") ||
+        request.getServletPath().equals("/log")
     ) {
       filterChain.doFilter(request, response);
       return;

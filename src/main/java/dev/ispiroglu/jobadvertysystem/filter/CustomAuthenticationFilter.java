@@ -35,7 +35,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
   @Override
   public Authentication attemptAuthentication(HttpServletRequest request,
-      HttpServletResponse response) throws AuthenticationException {
+                                              HttpServletResponse response)
+      throws AuthenticationException {
     String email = request.getParameter("email");
     String password = request.getParameter("password");
 
@@ -48,7 +49,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
   @SneakyThrows
   @Override
   protected void unsuccessfulAuthentication(HttpServletRequest request,
-      HttpServletResponse response, AuthenticationException failed)
+                                            HttpServletResponse response,
+                                            AuthenticationException failed)
       throws IOException, ServletException {
     log.info("Failed to authenticate -> {}", failed.getMessage());
     throw new javax.security.sasl.AuthenticationException("Invalid email or password");
@@ -56,7 +58,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
   @Override
   protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-      FilterChain chain, Authentication authResult) throws IOException, ServletException {
+                                          FilterChain chain, Authentication authResult)
+      throws IOException, ServletException {
     User user = (User) authResult.getPrincipal();
     Algorithm algorithm = Algorithm.HMAC256(
         "secret".getBytes()); // Secret should not be used like this.

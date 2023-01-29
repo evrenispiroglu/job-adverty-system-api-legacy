@@ -19,8 +19,6 @@ public class AddApplicantRequest {
 
   @Override
   public String toString() {
-    return "AddApplicantRequest{" +
-        "userId=" + userId +
-        '}';
+    return "AddApplicantRequest{" + "userId=" + userId + '}';
   }
 }

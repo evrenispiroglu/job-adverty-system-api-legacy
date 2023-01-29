@@ -11,7 +11,7 @@ public class AdvertAppliedUserInfoResponse {
   private String location;
 
   public AdvertAppliedUserInfoResponse(Long id, String firstname, String lastname, String email,
-      int experience, String location) {
+                                       int experience, String location) {
     this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;

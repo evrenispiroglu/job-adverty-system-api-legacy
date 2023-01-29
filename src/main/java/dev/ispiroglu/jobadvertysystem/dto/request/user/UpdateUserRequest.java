@@ -14,8 +14,9 @@ public class UpdateUserRequest {
   private String aboutUser;
 
   public UpdateUserRequest(String firstname, String lastname, String gender, String email,
-      String phoneNumber, String province, int provinceID, String district, int experience,
-      String aboutUser) {
+                           String phoneNumber, String province, int provinceID, String district,
+                           int experience,
+                           String aboutUser) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.gender = gender;
@@ -32,72 +33,72 @@ public class UpdateUserRequest {
     return firstname;
   }
 
-  public String getLastname() {
-    return lastname;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public String getProvince() {
-    return province;
-  }
-
-  public String getDistrict() {
-    return district;
-  }
-
-  public int getExperience() {
-    return experience;
-  }
-
   public void setFirstname(String firstname) {
     this.firstname = firstname;
+  }
+
+  public String getLastname() {
+    return lastname;
   }
 
   public void setLastname(String lastname) {
     this.lastname = lastname;
   }
 
+  public String getGender() {
+    return gender;
+  }
+
   public void setGender(String gender) {
     this.gender = gender;
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   public void setEmail(String email) {
     this.email = email;
   }
 
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public String getProvince() {
+    return province;
   }
 
   public void setProvince(String province) {
     this.province = province;
   }
 
+  public String getDistrict() {
+    return district;
+  }
+
   public void setDistrict(String district) {
     this.district = district;
+  }
+
+  public int getExperience() {
+    return experience;
   }
 
   public void setExperience(int experience) {
     this.experience = experience;
   }
 
-  public void setAboutUser(String aboutUser) {
-    this.aboutUser = aboutUser;
-  }
-
   public String getAboutUser() {
     return aboutUser;
+  }
+
+  public void setAboutUser(String aboutUser) {
+    this.aboutUser = aboutUser;
   }
 
   @Override

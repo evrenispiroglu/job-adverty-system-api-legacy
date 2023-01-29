@@ -20,7 +20,7 @@ public interface AdvertRepository extends JpaRepository<Advert, Long> {
   Page<Advert> findAdvertsByActive(boolean active, PageRequest pageRequest);
 
   Page<Advert> findAdvertsByActiveAndAdvertOwner(boolean active, PageRequest pageRequest,
-      AdvertOwner advertOwner);
+                                                 AdvertOwner advertOwner);
 
 
   List<Advert> findAdvertsByPositionContainingIgnoreCase(String position);
@@ -31,9 +31,10 @@ public interface AdvertRepository extends JpaRepository<Advert, Long> {
   @Query(value = "Select * from advert where province like (%:incomingProvince%) and"
       + " position like (%:incomingPosition%) and"
       + " advert.department like (%:incomingDepartment%) and"
-      + "( name like (%:incomingText%) or summary like (%:incomingText%)) and advert.active", nativeQuery = true)
+      +
+      "( name like (%:incomingText%) or summary like (%:incomingText%)) and advert.active", nativeQuery = true)
   List<Advert> findAdvertsByFullFilter(String incomingProvince, String incomingPosition,
-      String incomingDepartment, String incomingText);
+                                       String incomingDepartment, String incomingText);
 
   @Query(value = "Select * from advert where advert.start_date < :date ", nativeQuery = true)
   List<Advert> findStartingAdverts(Date date);

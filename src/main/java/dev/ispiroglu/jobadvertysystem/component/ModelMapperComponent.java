@@ -11,5 +11,5 @@ public class ModelMapperComponent {
   public ModelMapper modelMapper() {
     return new ModelMapper();
   }
-  
+
 }

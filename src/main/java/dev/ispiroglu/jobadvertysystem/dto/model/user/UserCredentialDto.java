@@ -26,7 +26,7 @@ public class UserCredentialDto {
   }
 
   public UserCredentialDto(Long id, boolean isEmployer, String email, String password,
-      LocalDateTime creationDate) {
+                           LocalDateTime creationDate) {
     this.id = id;
     this.isEmployer = isEmployer;
     this.email = email;
@@ -62,11 +62,11 @@ public class UserCredentialDto {
     return creationDate;
   }
 
-  public Long getId() {
-    return id;
-  }
-
   public void setCreationDate(LocalDateTime creationDate) {
     this.creationDate = creationDate;
+  }
+
+  public Long getId() {
+    return id;
   }
 }

@@ -16,6 +16,14 @@ public class AdvertOwner {
   @Id
   @GeneratedValue
   Long id;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "advert_id")
+  @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+  private Advert advert;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+  private User user;
 
   public AdvertOwner(Advert advert, User user) {
     this.advert = advert;
@@ -24,16 +32,6 @@ public class AdvertOwner {
 
   public AdvertOwner() {
   }
-
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "advert_id")
-  @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-  private Advert advert;
-
-  @ManyToOne
-  @JoinColumn(name = "user_id")
-  @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-  private User user;
 
   public Long getId() {
     return id;

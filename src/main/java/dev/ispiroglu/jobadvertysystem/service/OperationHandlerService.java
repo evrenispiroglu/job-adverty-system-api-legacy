@@ -23,7 +23,6 @@ import dev.ispiroglu.jobadvertysystem.util.user.UserValidationUtil;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -38,9 +37,9 @@ public class OperationHandlerService {
   private final AdvertOwnerRepository advertOwnerRepository;
 
   public OperationHandlerService(UserService userService, AdvertService advertService,
-      AdvertDtoConverter advertDtoConverter,
-      ApplicationDetailRepository applicationDetailRepository,
-      AdvertOwnerRepository advertOwnerRepository) {
+                                 AdvertDtoConverter advertDtoConverter,
+                                 ApplicationDetailRepository applicationDetailRepository,
+                                 AdvertOwnerRepository advertOwnerRepository) {
     this.userService = userService;
     this.advertService = advertService;
     this.advertDtoConverter = advertDtoConverter;
@@ -92,7 +91,8 @@ public class OperationHandlerService {
   }
 
   public void addApplicantToAdvert(Long advertId, Long userId)
-      throws UserNotFoundException, AdvertNotFoundException, UserNotValidForApplicationException, AdvertIsFullException, UserAlreadyAppliedException {
+      throws UserNotFoundException, AdvertNotFoundException, UserNotValidForApplicationException,
+      AdvertIsFullException, UserAlreadyAppliedException {
 
     User user = userService.findById(userId);
     if (!UserValidationUtil.isValidForApplication(user)) {
@@ -114,6 +114,11 @@ public class OperationHandlerService {
 
     userService.addApplicationToUser(user, application);
     advertService.addUserToAdvert(advert, application);
+
+    log.info("Created application for user Id:{} {} on advert Id:{}, {}|{}",
+        user.getId(), user.getFirstname() + " " + user.getLastname(),
+        advert.getId(), advert.getCompanyName(), advert.getName()
+    );
     applicationDetailRepository.save(application);
   }
 

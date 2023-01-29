@@ -21,8 +21,9 @@ public class UserDetailResponse {
   private String aboutUser;
 
   public UserDetailResponse(Long id, String firstname, String lastname, String gender, String email,
-      String phoneNumber, String province, int provinceID, String district, int experience,
-      String aboutUser) {
+                            String phoneNumber, String province, int provinceID, String district,
+                            int experience,
+                            String aboutUser) {
     this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;
@@ -112,15 +113,15 @@ public class UserDetailResponse {
     return provinceID;
   }
 
+  public void setProvinceID(int provinceID) {
+    this.provinceID = provinceID;
+  }
+
   public Long getId() {
     return id;
   }
 
   public void setId(Long id) {
     this.id = id;
-  }
-
-  public void setProvinceID(int provinceID) {
-    this.provinceID = provinceID;
   }
 }

@@ -51,9 +51,10 @@ public class AdvertDetailsDto {
 
 
   public AdvertDetailsDto(Long id, String name, String summary, Date startDate, Date endDate,
-      String position, int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean isActive, String companyName,
-      String department) {
+                          String position, int capacity, String district, String province,
+                          int provinceID,
+                          String jobDefinition, boolean isActive, String companyName,
+                          String department) {
     this.id = id;
     this.name = name;
     this.summary = summary;

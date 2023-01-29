@@ -18,8 +18,10 @@ public class AdvertInfoResponse {
   private String companyName;
 
   public AdvertInfoResponse(Long id, String name, String summary, String startDate,
-      String endDate, String position, int capacity, String district, String province,
-      int provinceID, String jobDefinition, boolean isOpen, String companyName, String department) {
+                            String endDate, String position, int capacity, String district,
+                            String province,
+                            int provinceID, String jobDefinition, boolean isOpen,
+                            String companyName, String department) {
     this.id = id;
     this.name = name;
     this.summary = summary;

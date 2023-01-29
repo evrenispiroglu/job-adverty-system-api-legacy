@@ -42,33 +42,22 @@ public class User {
   private LocalDateTime creationDate;
   @UpdateTimestamp
   private LocalDateTime update;
-
-  public LocalDateTime getCreationDate() {
-    return creationDate;
-  }
-
-  public void setCreationDate(LocalDateTime creationDate) {
-    this.creationDate = creationDate;
-  }
-
   @OneToMany(mappedBy = "user")
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
   private Set<ApplicationDetail> applications;
-
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
   private Set<AdvertOwner> ownedAdverts;
-
   @Lob
   private byte[] profilePhoto;
-
   @Lob
   private byte[] cv;
 
   public User(Long id, String firstname, String lastname, String gender, String email,
-      String password, String phoneNumber, String province, int provinceID, String district,
-      int experience, String aboutUser, boolean isEmployer, LocalDateTime creationDate,
-      LocalDateTime update, Set<ApplicationDetail> applications, byte[] profilePhoto, byte[] cv) {
+              String password, String phoneNumber, String province, int provinceID, String district,
+              int experience, String aboutUser, boolean isEmployer, LocalDateTime creationDate,
+              LocalDateTime update, Set<ApplicationDetail> applications, byte[] profilePhoto,
+              byte[] cv) {
     this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;
@@ -90,7 +79,7 @@ public class User {
   }
 
   public User(boolean isEmployer, String email, String password, String firstname,
-      String lastname) {
+              String lastname) {
     this.isEmployer = isEmployer;
     this.email = email;
     this.password = password;
@@ -100,6 +89,14 @@ public class User {
 
   public User() {
 
+  }
+
+  public LocalDateTime getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(LocalDateTime creationDate) {
+    this.creationDate = creationDate;
   }
 
   public Long getId() {

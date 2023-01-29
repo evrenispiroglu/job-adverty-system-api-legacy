@@ -38,9 +38,11 @@ public class FilteredAdvertResponse {
   private Set<ApplicationDetail> applications;
 
   public FilteredAdvertResponse(Long id, String name, String summary, Date startDate, Date endDate,
-      String position, int capacity, String district, String province, int provinceID,
-      String jobDefinition, boolean active, byte[] photo, String companyName,
-      String department, Set<ApplicationDetail> applications) {
+                                String position, int capacity, String district, String province,
+                                int provinceID,
+                                String jobDefinition, boolean active, byte[] photo,
+                                String companyName,
+                                String department, Set<ApplicationDetail> applications) {
     this.id = id;
     this.name = name;
     this.summary = summary;

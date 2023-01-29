@@ -9,7 +9,7 @@ public class DashboardAdvertTableInfoDto {
   private String location;
 
   public DashboardAdvertTableInfoDto(String companyName, String advertName, String position,
-      String summary, String location) {
+                                     String summary, String location) {
     this.companyName = companyName;
     this.advertName = advertName;
     this.position = position;

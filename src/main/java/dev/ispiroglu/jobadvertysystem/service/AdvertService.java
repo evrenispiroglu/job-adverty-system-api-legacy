@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.sql.rowset.serial.SerialBlob;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,9 +43,9 @@ public class AdvertService {
   private final EmailServiceImpl emailService;
 
   public AdvertService(AdvertRepository advertRepository,
-      AdvertDtoConverter advertDtoConverter, UserDtoConverter userDtoConverter,
-      AdvertOwnerRepository advertOwnerRepository, UserService userService,
-      EmailServiceImpl emailService) {
+                       AdvertDtoConverter advertDtoConverter, UserDtoConverter userDtoConverter,
+                       AdvertOwnerRepository advertOwnerRepository, UserService userService,
+                       EmailServiceImpl emailService) {
     this.advertRepository = advertRepository;
     this.advertDtoConverter = advertDtoConverter;
     this.userDtoConverter = userDtoConverter;
@@ -57,10 +56,8 @@ public class AdvertService {
 
   public Advert createAdvert(CreateAdvertRequest createAdvertRequest) {
     Advert advert = advertDtoConverter.convertToAdvert(createAdvertRequest);
-    return advertRepository.save(advert);
-  }
-
-  public Advert saveAdvert(Advert advert) {
+    log.info("Saving the advert: Id:{} {}|{}", advert.getId(), advert.getCompanyName(),
+        advert.getName());
     return advertRepository.save(advert);
   }
 
@@ -73,12 +70,17 @@ public class AdvertService {
     advertToSave.setUpdate(advert.getUpdate());
     advertToSave.setActive(advert.isActive());
     advertToSave.setPhoto(advert.getPhoto());
+
+    log.info("Updating the advert: Id:{} {}|{}", advert.getId(), advert.getCompanyName(),
+        advert.getName());
     advertRepository.save(advertToSave);
   }
 
   public void deleteAdvert(long id) throws AdvertNotFoundException {
     Advert advert = advertRepository.findById(id).orElseThrow(AdvertNotFoundException::new);
     advert.setActive(false);
+    log.info("Soft delete on advert: Id:{} {}|{}", advert.getId(), advert.getCompanyName(),
+        advert.getName());
     advertRepository.save(advert);
   }
 
@@ -132,6 +134,8 @@ public class AdvertService {
       throws AdvertNotFoundException, IOException, SQLException {
     Advert advert = findById(id);
     advert.setPhoto((file.getBytes()));
+    log.info("Photo update on advert: Id:{} {}|{}", advert.getId(), advert.getCompanyName(),
+        advert.getName());
     advertRepository.save(advert);
   }
 

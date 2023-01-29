@@ -8,7 +8,7 @@ public class GetFilteredAdvertsRequest {
   private String province;
 
   public GetFilteredAdvertsRequest(String searchText, String department, String position,
-      String province) {
+                                   String province) {
     this.searchText = searchText;
     this.department = department;
     this.position = position;

@@ -12,8 +12,8 @@ public class GetDashboardInfosRequest {
   private List<DashboardAdvertTableInfoDto> soonStartingAdverts;
 
   public GetDashboardInfosRequest(Long totalAdvertCount, Long totalUserCount, Long totalEventCount,
-      List<DashboardAdvertTableInfoDto> soonEndingAdverts,
-      List<DashboardAdvertTableInfoDto> soonStartingAdverts) {
+                                  List<DashboardAdvertTableInfoDto> soonEndingAdverts,
+                                  List<DashboardAdvertTableInfoDto> soonStartingAdverts) {
     this.totalAdvertCount = totalAdvertCount;
     this.totalUserCount = totalUserCount;
     this.totalEventCount = totalEventCount;

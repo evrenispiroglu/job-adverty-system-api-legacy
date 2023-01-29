@@ -17,7 +17,7 @@ public class CreateUserRequest {
   private String lastname;
 
   public CreateUserRequest(boolean isEmployer, String email, String password, String firstname,
-      String lastname) {
+                           String lastname) {
     this.isEmployer = isEmployer;
     this.email = email;
     this.password = password;

@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,11 +78,9 @@ public class UserController {
   @ResponseStatus(HttpStatus.NO_CONTENT) // Is this approach true?
   @PatchMapping(value = "/{id}")
   public void update(
-          @RequestBody UpdateUserRequest updateUserRequest, @PathVariable Long id)
+      @RequestBody UpdateUserRequest updateUserRequest, @PathVariable Long id)
       throws UserNotFoundException {
-    System.out.println(updateUserRequest);
     userService.updateUser(id, updateUserRequest);
-//    return ResponseEntity.ok(userService.updateUser(id, updateUserRequest));
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)

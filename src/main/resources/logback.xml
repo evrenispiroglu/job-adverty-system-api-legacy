@@ -26,4 +26,7 @@
     <root level="info">
         <appender-ref ref="logstash" />
     </root>
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
+        <level value="DEBUG" />
+    </logger>
 </configuration>

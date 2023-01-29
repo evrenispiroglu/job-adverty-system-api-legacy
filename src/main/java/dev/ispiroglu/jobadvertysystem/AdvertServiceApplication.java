@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfigurati
 @SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
 public class AdvertServiceApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AdvertServiceApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AdvertServiceApplication.class, args);
+  }
 }

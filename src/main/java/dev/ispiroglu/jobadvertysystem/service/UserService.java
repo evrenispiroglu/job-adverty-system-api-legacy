@@ -40,15 +40,14 @@ public class UserService implements UserDetailsService {
   private final PasswordEncoder passwordEncoder;
 
   public UserService(UserRepository userRepository,
-      UserDtoConverter userDtoConverter, AdvertDtoConverter advertDtoConverter,
-      PasswordEncoder passwordEncoder) {
+                     UserDtoConverter userDtoConverter, AdvertDtoConverter advertDtoConverter,
+                     PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.userDtoConverter = userDtoConverter;
     this.advertDtoConverter = advertDtoConverter;
     this.passwordEncoder = passwordEncoder;
   }
 
-  @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     User user = userRepository.findUserByEmail(email);
     if (user == null) {
@@ -57,7 +56,6 @@ public class UserService implements UserDetailsService {
     Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
     authorities.add(new SimpleGrantedAuthority(user.isEmployer() ? "employer" : "employee"));
     authorities.add(new SimpleGrantedAuthority("LOGGED_IN"));
-    log.info("Auths -> {}", authorities);
     return new org.springframework.security.core.userdetails.User(
         user.getEmail(), user.getPassword(), authorities
     );
@@ -67,6 +65,8 @@ public class UserService implements UserDetailsService {
     User user = new User(createUserRequest.isEmployer(), createUserRequest.getEmail(),
         passwordEncoder.encode(createUserRequest.getPassword()), createUserRequest.getFirstname(),
         createUserRequest.getLastname());
+    log.info("Created user: Id: {} {}", user.getId(),
+        user.getFirstname() + " " + user.getLastname());
     return userDtoConverter.convertToUserCredentialDto(userRepository.save(user));
   }
 
@@ -83,17 +83,20 @@ public class UserService implements UserDetailsService {
     user.setDistrict(updateUserRequest.getDistrict());
     user.setExperience(updateUserRequest.getExperience());
     user.setAboutUser(updateUserRequest.getAboutUser());
+    log.info("Updated user: Id: {} {}", user.getId(),
+        user.getFirstname() + " " + user.getLastname());
     userRepository.save(user);
   }
 
   public void deleteUser(Long id) throws UserNotFoundException {
     User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    log.info("Deleting user: Id: {} {}", user.getId(),
+        user.getFirstname() + " " + user.getLastname());
     userRepository.delete(user);
   }
 
   public void addApplicationToUser(User user, ApplicationDetail application) {
     user.addApplication(application);
-    System.out.println(user);
     userRepository.save(user);
   }
 
@@ -115,9 +118,10 @@ public class UserService implements UserDetailsService {
 
   public void updateUserProfilePicture(MultipartFile file, Long id)
       throws IOException, UserNotFoundException {
-
     User user = findById(id);
     user.setProfilePhoto(file.getBytes());
+    log.info("Updated user profile photo: Id: {} {}", user.getId(),
+        user.getFirstname() + " " + user.getLastname());
     userRepository.save(user);
   }
 
@@ -128,13 +132,14 @@ public class UserService implements UserDetailsService {
   public void updateUserCv(MultipartFile file, Long id) throws IOException, UserNotFoundException {
     User user = findById(id);
     user.setCv(file.getBytes());
+    log.info("Updated user CV: Id: {} {}", user.getId(),
+        user.getFirstname() + " " + user.getLastname());
     userRepository.save(user);
   }
 
   public Blob getUserCv(Long id) throws UserNotFoundException, SQLException {
     return new SerialBlob(findById(id).getCv());
   }
-
 
   public List<UserApplicationTableAdvertInfo> getAppliedAdverts(Long id)
       throws UserNotFoundException {
@@ -156,6 +161,4 @@ public class UserService implements UserDetailsService {
     user.addOwnedAdvert(advertOwner);
     userRepository.save(user);
   }
-
-
 }

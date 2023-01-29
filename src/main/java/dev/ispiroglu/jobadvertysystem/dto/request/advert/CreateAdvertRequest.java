@@ -49,11 +49,12 @@ public class CreateAdvertRequest {
 
 
   public CreateAdvertRequest(String name, String summary, Date startDate, Date endDate,
-      String position, int capacity, String district, String province, int provinceID,
-      String jobDefinition,
+                             String position, int capacity, String district, String province,
+                             int provinceID,
+                             String jobDefinition,
 //      byte[] photo,
-      String companyName,
-      String department) {
+                             String companyName,
+                             String department) {
     this.name = name;
     this.summary = summary;
     this.startDate = startDate;
